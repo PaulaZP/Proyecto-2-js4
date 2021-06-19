@@ -1,13 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-    <script src="js/index.js"></script>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TO DO LIST</title>
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="wrapper-second">
+                <p id="title-list">To do list</p>
+
+                <form class="form-items">
+                    <label class="label-add" for="">Add your task</label>
+                    <input class="input-add" type="text" required>
+                    <input class="input-submit" type="submit" value="Add">
+                </form>
+            
+                <label class="label-category" for="">Choose a category</label>
+                <select class="select-category" name="" id="">
+                    <option value="shopping">Shopping</option>
+                    <option value="chores">Chores</option>
+                    <option value="school">School</option>
+                </select>
+                
+                <!-- Las tareas van acá -->
+                <ul></ul>
+            </div>
+        </div>
+        <script src="js/index.js"></script>
+    </body>
 </html>

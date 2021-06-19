@@ -1,0 +1,69 @@
+body{
+    background-color: #F7E8C3;
+}
+#wrapper{
+    background-image: url(../img/background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+    padding: 200px 0;
+    height: 1000px;
+    width: 980px;
+}
+#wrapper-second{
+    border: 1px solid white;
+    background-color: #ffffff;
+    margin: 0 auto;
+    position: relative;
+    width: 700px;
+}
+#title-list{
+    background-color: #FFC03C;
+    margin: 0 auto;
+    font-size: 36px;
+    font-family: 'Dancing Script', cursive;
+    padding: 25px 20px;
+    position: absolute;
+    bottom: 160px;
+    left: 180px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 300px;
+}
+label{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+}
+.form-items{
+    margin-top: 100px;
+}
+.label-add{
+    margin-left: 60px;
+}
+.input-add{
+    margin-left: 10px;
+    margin-bottom: 30px;
+    width: 425px;
+    height: 25px;
+    font-size: 20px;
+}
+.input-submit{
+    border: none;
+    background-color: #3AE5C5;
+    padding: 7px 8px;
+    position: absolute;
+    top: 161px;
+    right: 250px;
+}
+.input-submit:hover{
+    background-color: #C025B6;
+    color: #ffffff;
+}
+.label-category{
+    margin-left: 60px;
+    margin-right: 10px;
+}
+.select-category{
+    padding: 5px 8px;
+    width: 150px;
+}
