@@ -23,9 +23,9 @@ body{
     font-size: 36px;
     font-family: 'Dancing Script', cursive;
     padding: 25px 20px;
-    position: absolute;
-    bottom: 160px;
-    left: 180px;
+    bottom: 670px;
+    left: 780px;
+    position: fixed;
     text-align: center;
     text-transform: uppercase;
     width: 300px;

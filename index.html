@@ -15,7 +15,7 @@
                 <p id="title-list">To do list</p>
 
                 <form class="form-items" id="form">
-                    <label class="label-add" for="">Add your task</label>
+                    <label class="label-add" for="description-task">Add your task</label>
                     <input id="description-task" class="input-add" type="text" required>
                     <input id="button-submit" class="input-submit" type="submit" value="Add">
                 </form>
@@ -28,7 +28,9 @@
                 </select>
                 
                 <!-- Las tareas van acá -->
-                <ul></ul>
+                <ul id="list">
+                    <div id="imagesCategory"></div>
+                </ul>
             </div>
         </div>
         <script src="js/index.js"></script>
