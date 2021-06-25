@@ -34,6 +34,10 @@ label{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
 }
+ul li{
+    margin: 20px 0;
+    list-style: none;
+}
 .form-items{
     margin-top: 100px;
 }
@@ -67,31 +71,13 @@ label{
     padding: 5px 8px;
     width: 150px;
 }
-.delete-img{
-    padding: 0;
-    margin-top: -25px;
-    border: none;
-    float: right;
-    margin-right: 330px;
-    margin-left: 0px;
-    background-color: transparent;
-    background-image: url(../img/trashCan1.png);
-    background-repeat: no-repeat;
-    background-size: 20px 20px;
-    width: 20px;
-    height: 20px;
-}
-.category-img{
-    margin: 0 20px;
-}
-
-ul li{
-    margin: 20px 0;
-    list-style: none;
-}
 .checkbox{
     width: 20px;
     height: 20px;
+}
+
+.category-img{
+    margin: 0 20px;
 }
 .edit-img{
     padding: 0;
@@ -106,8 +92,25 @@ ul li{
     width: 20px;
     height: 20px;
 }
+.delete-img{
+    padding: 0;
+    margin-top: -25px;
+    border: none;
+    float: right;
+    margin-right: 330px;
+    margin-left: 0px;
+    background-color: transparent;
+    background-image: url(../img/trashCan1.png);
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    width: 20px;
+    height: 20px;
+}
 .clearfix::after{
     content: "";
     clear: both;
     display: table;
 }
+
+
+
