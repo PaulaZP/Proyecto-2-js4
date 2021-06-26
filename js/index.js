@@ -1,5 +1,4 @@
 const form = document.querySelector('#form');
-let counterTask = 0;
 const arrayTask = [];
 const listTask = document.querySelector('#list');
 const optionCategory = document.querySelector('select');
@@ -11,22 +10,20 @@ form.addEventListener('submit', (event) =>{
 })
 
 function handleControls(){
-    const createList = new ObjectList(arrayTask, counterTask);
+    const createList = new ObjectList(arrayTask);
     createList.add();
+    createList.delete();
 }
 
 class ObjectList{
-    constructor (arrayTask, counterTask )  {
+    constructor (arrayTask)  {
         this.arrayTask = arrayTask;
-        this.counterTask = counterTask;
     }
     add(){
         const item = document.createElement('li');
-
         const checkbox = document.createElement('input');
         checkbox.className = 'checkbox';
         checkbox.setAttribute('type','checkbox');
-        checkbox.setAttribute('id',`task-${counterTask}`);
         item.appendChild(checkbox);
 
         if(optionCategory.value === 'shopping'){
@@ -54,29 +51,33 @@ class ObjectList{
         }
 
         const label = document.createElement('label');
-        label.setAttribute('for', `task-${counterTask}`);
         label.innerHTML = `${form.elements[0].value}`;
 
         const editImg = document.createElement('button');
         editImg.className = 'edit-img clearfix';
         item.appendChild(editImg);
 
-        const deleteImg = document.createElement('button');
-        deleteImg.className = 'delete-img clearfix';
-        item.appendChild(deleteImg);
-
         item.appendChild(label);
         listTask.appendChild(item);
 
-        const userTask = {
-            id: counterTask,
-            name: form.elements[0].value,
-            status: false,
-        };
-        arrayTask.push(userTask);
+        arrayTask.push(item);
 
-        counterTask++;
         form.elements[0].value = '';
-
     }
+    delete(){
+        deteleTask();
+    }
+}
+function deteleTask(){
+    const li = document.querySelectorAll('ul li');
+    
+
+    for (let i= 0; i < li.length; i++) {
+        const deleteImg = document.createElement('button');
+        deleteImg.className = 'delete-img clearfix';
+        const prueba = li[i].appendChild(deleteImg);
+        console.log(li[i]);
+        
+    }
+
 }
