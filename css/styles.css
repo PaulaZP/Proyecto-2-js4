@@ -14,6 +14,7 @@ body{
     border: 1px solid white;
     background-color: #ffffff;
     margin: 0 auto;
+    padding-bottom: 20px;
     position: relative;
     width: 700px;
 }
@@ -62,6 +63,18 @@ ul li{
 .input-submit:hover{
     background-color: #C025B6;
     color: #ffffff;
+}
+.btn-delte-all{
+    float: right;
+    margin-right: 73px;
+    background-color: #C025B6;
+    color: #ffffff;
+    border: none;
+    padding: 7px 8px;
+}
+.btn-delte-all:hover{
+    background-color: #3AE5C5;
+    color: #000000;
 }
 .label-category{
     margin-left: 60px;

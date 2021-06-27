@@ -65,19 +65,26 @@ class ObjectList{
         form.elements[0].value = '';
     }
     delete(){
-        deteleTask();
-    }
-}
-function deteleTask(){
-    const li = document.querySelectorAll('ul li');
+        const li = document.querySelectorAll('ul li');
     
+        for (let i= 0; i < li.length; i++) {
+            const deleteImg = document.createElement('button');
+            deleteImg.className = 'delete-img clearfix';
+            li[i].appendChild(deleteImg);
 
-    for (let i= 0; i < li.length; i++) {
-        const deleteImg = document.createElement('button');
-        deleteImg.className = 'delete-img clearfix';
-        const prueba = li[i].appendChild(deleteImg);
-        console.log(li[i]);
+            deleteImg.addEventListener('click', () =>{
+                li[i].remove();
+            })
+        }
         
-    }
+        const deleteAll = document.querySelector('#btn-delte-all');
 
+        deleteAll.addEventListener('click',() =>{
+            for (let i = 0; i < li.length; i++) {
+                li[i].remove();  
+            }
+            
+        })
+    }
 }
+
