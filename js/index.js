@@ -1,4 +1,5 @@
 const form = document.querySelector('#form');
+let contadorTareas = 0;
 const arrayTask = [];
 const listTask = document.querySelector('#list');
 const optionCategory = document.querySelector('select');
@@ -6,12 +7,13 @@ const optionCategory = document.querySelector('select');
 form.addEventListener('submit', (event) =>{
     event.preventDefault();
     handleControls();
-
+    local();
 })
 
 function handleControls(){
     const createList = new ObjectList(arrayTask);
     createList.add();
+    createList.edit();
     createList.delete();
 }
 
@@ -23,6 +25,7 @@ class ObjectList{
         const item = document.createElement('li');
         const checkbox = document.createElement('input');
         checkbox.className = 'checkbox';
+        checkbox.setAttribute('id',`tarea-${contadorTareas}`);
         checkbox.setAttribute('type','checkbox');
         item.appendChild(checkbox);
 
@@ -51,6 +54,7 @@ class ObjectList{
         }
 
         const label = document.createElement('label');
+        checkbox.setAttribute('id',`tarea-${contadorTareas}`);
         label.innerHTML = `${form.elements[0].value}`;
 
         const editImg = document.createElement('button');
@@ -60,9 +64,16 @@ class ObjectList{
         item.appendChild(label);
         listTask.appendChild(item);
 
-        arrayTask.push(item);
-
         form.elements[0].value = '';
+    }
+    edit(){
+        const buttonEdit = document.querySelectorAll('li .edit-img');
+
+        for (let i = 0; i < buttonEdit.length; i++) {
+            buttonEdit[i].addEventListener('click', () => {
+                console.log('hola')
+            })
+        }
     }
     delete(){
         const li = document.querySelectorAll('ul li');
@@ -87,4 +98,31 @@ class ObjectList{
         })
     }
 }
+
+function local(){
+    const userTask = {
+        id: contadorTareas,
+        description: form.elements[0].value,
+        completo: false,
+    };
+
+    arrayTask.push(userTask);
+
+    contadorTareas++;
+
+    
+    console.log(JSON.parse(localStorage.getItem('Task')));
+
+    if(localStorage.getItem('Task') === null){
+        let arrayNewTasks = [];
+        arrayNewTasks.push(userTask);
+        localStorage.setItem('Task', JSON.stringify(arrayNewTasks));
+    }else{
+        let arrayNewTasks = JSON.parse(localStorage.getItem('Task'));
+        arrayNewTasks.push(userTask);
+        localStorage.setItem('Task', JSON.stringify(arrayNewTasks))
+    }
+}
+
+
 
