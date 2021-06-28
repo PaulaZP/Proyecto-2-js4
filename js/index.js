@@ -1,6 +1,8 @@
 const form = document.querySelector('#form');
 let contadorTareas = 0;
 let arrayTask = [];
+const day = new Date();
+day.className = 'day';
 const listTask = document.querySelector('#list');
 const optionCategory = document.querySelector('select');
 
@@ -58,6 +60,11 @@ class ObjectList{
         label.setAttribute('id',`tarea-${contadorTareas}`);
         label.innerHTML = `${form.elements[0].value}`;
 
+        const hourP = document.createElement('p');
+        hourP.className = 'hours clearfix';
+        hourP.innerHTML =`${day.getHours()} : ${day.getMinutes()} : ${day.getSeconds()}`;
+        item.appendChild(hourP);
+
         const editImg = document.createElement('button');
         editImg.className = 'edit-img clearfix';
         item.appendChild(editImg);
@@ -69,6 +76,7 @@ class ObjectList{
             id: contadorTareas,
             description: form.elements[0].value,
             completo: false,
+            fecha:day,
         }
     
         arrayTask.push(userTask);
@@ -96,6 +104,8 @@ class ObjectList{
             li[i].appendChild(deleteImg);
 
             deleteImg.addEventListener('click', () =>{
+                localStorage.setItem('Task', JSON.stringify(arrayTask));
+                localStorage.removeItem('Task');
                 li[i].remove();
             })
         }
@@ -104,9 +114,10 @@ class ObjectList{
 
         deleteAll.addEventListener('click',() =>{
             for (let i = 0; i < li.length; i++) {
+                localStorage.setItem('Task', JSON.stringify(arrayTask));
+                localStorage.removeItem('Task');
                 li[i].remove();  
             }
-            
         })
     }
 }
