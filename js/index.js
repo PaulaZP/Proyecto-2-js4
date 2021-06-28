@@ -1,13 +1,13 @@
 const form = document.querySelector('#form');
 let contadorTareas = 0;
-const arrayTask = [];
+let arrayTask = [];
 const listTask = document.querySelector('#list');
 const optionCategory = document.querySelector('select');
 
 form.addEventListener('submit', (event) =>{
     event.preventDefault();
     handleControls();
-    local();
+    prueba();
 })
 
 function handleControls(){
@@ -23,6 +23,7 @@ class ObjectList{
     }
     add(){
         const item = document.createElement('li');
+        
         const checkbox = document.createElement('input');
         checkbox.className = 'checkbox';
         checkbox.setAttribute('id',`tarea-${contadorTareas}`);
@@ -54,7 +55,7 @@ class ObjectList{
         }
 
         const label = document.createElement('label');
-        checkbox.setAttribute('id',`tarea-${contadorTareas}`);
+        label.setAttribute('id',`tarea-${contadorTareas}`);
         label.innerHTML = `${form.elements[0].value}`;
 
         const editImg = document.createElement('button');
@@ -63,6 +64,17 @@ class ObjectList{
 
         item.appendChild(label);
         listTask.appendChild(item);
+
+        const userTask = {
+            id: contadorTareas,
+            description: form.elements[0].value,
+            completo: false,
+        }
+    
+        arrayTask.push(userTask);
+        contadorTareas++;
+
+        localStorage.setItem('Task', JSON.stringify(arrayTask));
 
         form.elements[0].value = '';
     }
@@ -99,30 +111,23 @@ class ObjectList{
     }
 }
 
-function local(){
-    const userTask = {
-        id: contadorTareas,
-        description: form.elements[0].value,
-        completo: false,
-    };
+function prueba(){
+    const tasks = JSON.parse(localStorage.getItem('Task'));
+    let tasksView = document.getElementById('tasks');
+    tasksView.innerHTML = '';
 
-    arrayTask.push(userTask);
+    if(tasks){
+        arrayTask = tasks;
+    }
 
-    contadorTareas++;
+    for(let i = 0; i < tasks.length; i++) {
+        let description = tasks[i].description;
 
-    
-    console.log(JSON.parse(localStorage.getItem('Task')));
-
-    if(localStorage.getItem('Task') === null){
-        let arrayNewTasks = [];
-        arrayNewTasks.push(userTask);
-        localStorage.setItem('Task', JSON.stringify(arrayNewTasks));
-    }else{
-        let arrayNewTasks = JSON.parse(localStorage.getItem('Task'));
-        arrayNewTasks.push(userTask);
-        localStorage.setItem('Task', JSON.stringify(arrayNewTasks))
+        tasksView.innerHTML += `<div class="card mb-3">
+            <div class="card-body">
+                <p>${description}
+                </p>
+            </div>
+        </div>`;
     }
 }
-
-
-
