@@ -10,11 +10,25 @@ form.addEventListener('submit', (event) =>{
     event.preventDefault();
     handleControls();
     prueba();
+
+    const userTask = {
+        id: contadorTareas,
+        description: form.elements[0].value,
+        completo: false,
+        fecha:day,
+    }
+
+    arrayTask.push(userTask);
+    contadorTareas++;
+
+    localStorage.setItem('Task', JSON.stringify(arrayTask));
+
+    form.elements[0].value = '';
 })
 
 function handleControls(){
     const createList = new ObjectList(arrayTask);
-    createList.add();
+    createList.add();    
     createList.edit();
     createList.delete();
 }
@@ -30,7 +44,6 @@ class ObjectList{
         checkbox.className = 'checkbox';
         checkbox.setAttribute('id',`tarea-${contadorTareas}`);
         checkbox.setAttribute('type','checkbox');
-        item.appendChild(checkbox);
 
         if(optionCategory.value === 'shopping'){
             const shoppingImg = document.createElement('img');
@@ -63,28 +76,17 @@ class ObjectList{
         const hourP = document.createElement('p');
         hourP.className = 'hours clearfix';
         hourP.innerHTML =`${day.getHours()} : ${day.getMinutes()} : ${day.getSeconds()}`;
-        item.appendChild(hourP);
+        
 
         const editImg = document.createElement('button');
         editImg.className = 'edit-img clearfix';
-        item.appendChild(editImg);
+        
 
-        item.appendChild(label);
         listTask.appendChild(item);
-
-        const userTask = {
-            id: contadorTareas,
-            description: form.elements[0].value,
-            completo: false,
-            fecha:day,
-        }
-    
-        arrayTask.push(userTask);
-        contadorTareas++;
-
-        localStorage.setItem('Task', JSON.stringify(arrayTask));
-
-        form.elements[0].value = '';
+        item.appendChild(checkbox);
+        item.appendChild(label);
+        item.appendChild(hourP);
+        item.appendChild(editImg);
     }
     edit(){
         const buttonEdit = document.querySelectorAll('li .edit-img');
@@ -124,21 +126,8 @@ class ObjectList{
 
 function prueba(){
     const tasks = JSON.parse(localStorage.getItem('Task'));
-    let tasksView = document.getElementById('tasks');
-    tasksView.innerHTML = '';
 
     if(tasks){
         arrayTask = tasks;
-    }
-
-    for(let i = 0; i < tasks.length; i++) {
-        let description = tasks[i].description;
-
-        tasksView.innerHTML += `<div class="card mb-3">
-            <div class="card-body">
-                <p>${description}
-                </p>
-            </div>
-        </div>`;
     }
 }
