@@ -102,12 +102,10 @@ class ObjectList{
                 li.innerHTML = inputEdit;
                 li[i].appendChild(inputEdit);
 
-                const edit = document.querySelectorAll('input .inputEdit1');
+                listTask.addEventListener('keypress', (event) => {
+                    if (event.keyCode == 13) {
+                        console.log('hola')
 
-                edit[i].addEventListener('keypress', function (e) {
-                    if (e.key === 'Enter') {
-                        const label = document.createElement('label');
-                        label.innerHTML = `${form.elements[0].value}`;
                     }
                 });
             })
@@ -115,10 +113,10 @@ class ObjectList{
     }
     delete(){
         const li = document.querySelectorAll('ul li');
-    
+        const deleteImg = document.createElement('button');
+        deleteImg.className = 'delete-img clearfix';
+        
         for (let i= 0; i < li.length; i++) {
-            const deleteImg = document.createElement('button');
-            deleteImg.className = 'delete-img clearfix';
             li[i].appendChild(deleteImg);
 
             deleteImg.addEventListener('click', () =>{
