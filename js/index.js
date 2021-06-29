@@ -10,10 +10,12 @@ form.addEventListener('submit', (event) =>{
     event.preventDefault();
     handleControls();
     prueba();
+    const description = form.elements[0].value;
+    console.log(description);
 
     const userTask = {
         id: contadorTareas,
-        description: form.elements[0].value,
+        description: description,
         completo: false,
         fecha:day,
     }
@@ -90,10 +92,24 @@ class ObjectList{
     }
     edit(){
         const buttonEdit = document.querySelectorAll('li .edit-img');
+        const li = document.querySelectorAll('ul li label');
 
         for (let i = 0; i < buttonEdit.length; i++) {
             buttonEdit[i].addEventListener('click', () => {
-                console.log('hola')
+                li[i].innerHTML = '';
+                const inputEdit = document.createElement('input');
+                inputEdit.className = 'inputEdit1';
+                li.innerHTML = inputEdit;
+                li[i].appendChild(inputEdit);
+
+                const edit = document.querySelectorAll('input .inputEdit1');
+
+                edit[i].addEventListener('keypress', function (e) {
+                    if (e.key === 'Enter') {
+                        const label = document.createElement('label');
+                        label.innerHTML = `${form.elements[0].value}`;
+                    }
+                });
             })
         }
     }
