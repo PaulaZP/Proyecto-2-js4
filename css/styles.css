@@ -146,9 +146,4 @@ input[type="checkbox"]:checked + label{
     text-decoration: line-through;
     color: #999;
 }
-li .input-add input[type=text]{
-    display: block;
-}
-li .input-add label{
-    display: none;
-}
+

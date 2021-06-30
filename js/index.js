@@ -1,50 +1,22 @@
+import {formSubmit} from './eventSubmit.js';
+
 //Variables principales
 const form = document.querySelector('#form');
-let counterTask = 0;
 let arrayTask = [];
 const day = new Date();
 day.className = 'day';
 const listTask = document.querySelector('#list');
 const optionCategory = document.querySelector('select');
 
-//evento de tipo submit el cual lee una funcion
-form.addEventListener('submit', (event) =>{
-    event.preventDefault();
-    handleControls();
+//Se ejecuta el evento submit y llama a la funcion que controla los métodos el objeto
+formSubmit();
 
-    const description = form.elements[0].value;
-    console.log(description);
-
-    const userTask = {
-        id: counterTask,
-        description: description,
-        complete: false,
-        date:day,
-    }
-
-    arrayTask.push(userTask);
-    this.counterTask++;
-
-    localStorage.setItem('Task', JSON.stringify(arrayTask));
-
-    form.elements[0].value = '';
-})
-
-//funcion que controla y ejecuta los métodos del objeto y los instancia al mismo tiempo
-function handleControls(){
-    const createList = new ObjectList(arrayTask,day,listTask,optionCategory,counterTask);
-    createList.add();    
-    createList.edit();
-    createList.delete();
-}
 //se crea el objeto que contiene varias propiedades se utilizan en los metodos de añadir, editar y eliminar
 class ObjectList{
-    constructor (arrayTask,day,listTask,optionCategory,counterTask)  {
-        this.arrayTask = arrayTask;
+    constructor (day,listTask,optionCategory)  {
         this.day = day;
         this.listTask = listTask;
         this.optionCategory = optionCategory;
-        this.counterTask = counterTask;
     }
 
     /*metodo que crea y agrega los elementos del label conteniendo la 
@@ -55,7 +27,7 @@ class ObjectList{
         
         const checkbox = document.createElement('input');
         checkbox.className = 'checkbox';
-        checkbox.setAttribute('id',`tarea-${this.counterTask}`);
+        checkbox.setAttribute('id','tarea');
         checkbox.setAttribute('type','checkbox');
 
         if(this.optionCategory.value === 'shopping'){
@@ -83,7 +55,7 @@ class ObjectList{
         }
 
         const label = document.createElement('label');
-        label.setAttribute('id',`tarea-${this.counterTask}`);
+        label.setAttribute('id','tarea');
         label.innerHTML = `${form.elements[0].value}`;
 
         const hourP = document.createElement('p');
@@ -152,3 +124,12 @@ class ObjectList{
         })
     }
 }
+
+export default ObjectList;
+export{
+    form,
+    arrayTask,
+    day,
+    listTask,
+    optionCategory
+};
