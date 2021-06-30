@@ -50,23 +50,23 @@ class ObjectList{
         if(optionCategory.value === 'shopping'){
             const shoppingImg = document.createElement('img');
             shoppingImg.className = 'category-img';
-            shoppingImg.setAttribute("src", "./img/shopping1.png");
-            shoppingImg.setAttribute("alt", "shopping");
+            shoppingImg.setAttribute('src', './img/shopping1.png');
+            shoppingImg.setAttribute('alt', 'shopping');
             
             item.appendChild(shoppingImg);
     
         }else if(optionCategory.value === 'chores'){
             const chores = document.createElement('img');
             chores.className = 'category-img';
-            chores.setAttribute("src", "./img/chores1.png");
-            chores.setAttribute("alt", "shopping");
+            chores.setAttribute('src', './img/chores1.png');
+            chores.setAttribute('alt', 'shopping');
             
             item.appendChild(chores);
         }else{
             const schoolImg = document.createElement('img');
             schoolImg.className = 'category-img';
-            schoolImg.setAttribute("src", "./img/school1.png");
-            schoolImg.setAttribute("alt", "shopping");
+            schoolImg.setAttribute('src', './img/school1.png');
+            schoolImg.setAttribute('alt', 'shopping');
             
             item.appendChild(schoolImg);
         }
@@ -78,11 +78,9 @@ class ObjectList{
         const hourP = document.createElement('p');
         hourP.className = 'hours clearfix';
         hourP.innerHTML =`${day.getHours()} : ${day.getMinutes()} : ${day.getSeconds()}`;
-        
 
         const editImg = document.createElement('button');
         editImg.className = 'edit-img clearfix';
-        
 
         listTask.appendChild(item);
         item.appendChild(checkbox);
